@@ -1,7 +1,8 @@
-class UserController {
-  async list (ctx) {
+
+const user = {
+  list: async (ctx) => {
     ctx.body = 'hello world'
   }
 }
 
-module.exports = UserController
+module.exports = user
