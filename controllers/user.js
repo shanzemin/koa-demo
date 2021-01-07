@@ -1,12 +1,16 @@
 
-const UserModel = require('../model/user')
+const UserService = require('../service/user')
+const userService = new UserService()
 
 const user = {
   list: async (ctx) => {
-    ctx.body = 'hello world'
+    const query = Object.assign({}, ctx.query)
+    console.log(query)
+    const users = await userService.list({ where: query })
+    ctx.body = users
   },
   create: async (ctx) => {
-    const user = await UserModel.create(ctx.request.body)
+    const user = await userService.create(ctx.request.body)
     if (!user) {
       throw new Error('创建失败')
     }

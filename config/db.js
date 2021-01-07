@@ -22,8 +22,6 @@ const db = new Sequelize(databaseName, username, password, {
 })
 
 // 自动生成表结构
-db.sync({
-  force: true
-})
+db.sync()
 
 module.exports = { db }
