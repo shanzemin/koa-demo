@@ -5,7 +5,6 @@ const userService = new UserService()
 const user = {
   list: async (ctx) => {
     const query = Object.assign({}, ctx.query)
-    console.log(query)
     const users = await userService.list({ where: query })
     ctx.body = users
   },

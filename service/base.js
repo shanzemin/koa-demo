@@ -4,7 +4,6 @@ class BaseService {
   }
 
   async list (query = {}) {
-    console.log('---base---', query)
     return this.model.findAndCountAll(query)
   }
 
