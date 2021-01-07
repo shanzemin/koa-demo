@@ -8,6 +8,8 @@ const logger = require('koa-logger')
 const helmet = require('koa-helmet')
 const routers = require('./routes')
 const path = require('path')
+const morgan = require('koa-morgan')
+const fse = require('fs-extra')
 
 // error handler
 onerror(app)
@@ -23,20 +25,17 @@ app.use(require('koa-static')(path.join(__dirname, '/public')))
 app.use(views(path.join(__dirname, '/views'), {
   extension: 'ejs'
 }))
-
-// logger
-app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
-})
+// morgan日志
+const logs = path.join(__dirname, 'logs', 'access.log')
+const accessLogStream = fse.createWriteStream(
+  logs, { flags: 'a' }
+)
+app.use(morgan('combined', { stream: accessLogStream }))
+// helmet
+app.use(helmet())
 
 // routes
 app.use(routers.routes(), routers.allowedMethods())
-
-// helmet
-app.use(helmet())
 
 // error-handling
 app.on('error', (err, ctx) => {
