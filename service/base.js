@@ -4,11 +4,11 @@ class BaseService {
   }
 
   async list (query = {}) {
-    return this.model.findAndCountAll(query)
+    return this.model.findAndCountAll({ where: query })
   }
 
   async findById (id) {
-    return this.model.findById(id)
+    return this.model.findByPk(id)
   }
 
   async findOne (query) {
@@ -19,8 +19,8 @@ class BaseService {
     return this.model.create(data)
   }
 
-  async upsert (data) {
-    return this.model.upsert(data)
+  async update (query = {}, data) {
+    return this.model.update(data, { where: query })
   }
 
   async destory (query) {
