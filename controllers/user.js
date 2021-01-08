@@ -10,8 +10,12 @@ class UserController {
   }
 
   async show (ctx) {
-    const users = await userService.findById(ctx.params.id)
-    ctx.success(users)
+    const user = await userService.findById(ctx.params.id)
+    if (!user) {
+      ctx.error('not found', 404)
+      return
+    }
+    ctx.success(user)
   }
 
   async create (ctx) {
