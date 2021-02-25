@@ -7,7 +7,6 @@ const db = new Sequelize(process.env.DB_databaseName, process.env.DB_username, p
   dialectOptions: {
     // 字符集
     charset: 'utf8mb4',
-    collate: 'utf8mb4_unicode_ci',
     supportBigNumbers: true,
     bigNumberStrings: true
   },
