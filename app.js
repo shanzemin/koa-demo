@@ -47,6 +47,7 @@ app.use(views(path.join(__dirname, '/views'), {
 // }
 // morgan 记录http日志
 const logs = path.join(__dirname, 'logs', 'access.log')
+fse.ensureDirSync(logs)
 const accessLogStream = fse.createWriteStream(
   logs, { flags: 'a' }
 )
