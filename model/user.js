@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 const User = db.define('user', {
   id: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
     allowNull: true,
     autoIncrement: true

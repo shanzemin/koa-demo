@@ -46,10 +46,10 @@ app.use(views(path.join(__dirname, '/views'), {
 //   }))
 // }
 // morgan 记录http日志
-const logs = path.join(__dirname, 'logs', 'access.log')
+const logs = path.join(__dirname, 'logs')
 fse.ensureDirSync(logs)
 const accessLogStream = fse.createWriteStream(
-  logs, { flags: 'a' }
+  `${logs}/access.log`, { flags: 'a' }
 )
 app.use(morgan('combined', { stream: accessLogStream }))
 // helmet
