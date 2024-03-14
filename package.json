@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npx cross-env NODE_ENV=production && node bin/www",
-    "dev": "npx cross-env NODE_ENV=development && nodemon bin/www",
-    "test": "npx cross-env NODE_ENV=test && jest --runInBand --forceExit --colors"
+    "start": "cross-env NODE_ENV=prod node bin/www",
+    "dev": "cross-env NODE_ENV=dev nodemon bin/www",
+    "test": "ross-env NODE_ENV=test jest --runInBand --forceExit --colors"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

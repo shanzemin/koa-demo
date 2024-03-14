@@ -2,6 +2,7 @@ const path = require('path')
 // 引用放在最上，避免加载顺序问题导致配置未生效
 const envFile = require('./config/dotenv')
 require('dotenv').config({ path: path.resolve(__dirname, envFile) })
+
 const Koa = require('koa')
 const app = new Koa()
 const views = require('koa-views')
